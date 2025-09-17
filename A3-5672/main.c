@@ -6,8 +6,10 @@ int main(void)
 	int n,i,k,j;
 	printf("请输入一个不大于9的整数:");
 	scanf("%d", &n);
+	/*输出正三角*/
 	for (i = 0; i < n ; i++)
 	{
+		/*输出每行前的空格*/
 		for (j = n - i- 1; j >= 0; j--)
 		{
 			printf(" ");
@@ -18,6 +20,7 @@ int main(void)
 		}
 		printf("\n");
 	}
+	/*输出倒三角*/
 	for (i = n - 1; i > 0; i--)
 	{
 		for (j = 0; j <= n - i; j++)

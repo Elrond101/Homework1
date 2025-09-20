@@ -2,17 +2,10 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 unsigned long int fact(unsigned long int n);/*阶乘*/
-unsigned long int main(void)
+int main()
 {
 	unsigned long int n, max, i, CF = 0, sum = 0;
-	printf("请输入一个不大于100的正整数：");
-	scanf("%d", &n);
-	printf("\n请输入和的最大值:");
-	scanf("%d", &max);
-	if (n >= 13)
-		printf("\noverflow");
-	else
-	{
+	scanf("%lu,%lu", &n, &max);
 		for (i = 1; i <= n; i++)
 		{
 			sum += fact(i);
@@ -21,12 +14,20 @@ unsigned long int main(void)
 				CF = 1;/*将溢出标识设为1*/
 				break;
 			}
+			else
+			{
+				if (n >= 13)
+				{
+					i = 13;
+					CF = 1;
+					break;
+				}
+			}
 		}
 		if (CF == 1)
-			printf("overflow");
+			printf("overflow at %lu!",i);
 		else
-			printf("\n%d", sum);
-	}
+			printf("%lu", sum);
 	return 0;
 }
 

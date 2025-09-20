@@ -4,31 +4,32 @@
 int main(void)
 {
 	int n,i,k,j;
-	printf("请输入一个不大于9的整数:");
 	scanf("%d", &n);
 	/*输出正三角*/
 	for (i = 0; i < n ; i++)
 	{
 		/*输出每行前的空格*/
-		for (j = n - i- 1; j >= 0; j--)
+		for (j = n - i- 2; j >= 0; j--)
 		{
 			printf(" ");
 		}
-		for (k = 0; k < i + 1; k++)
+		for (k = 0; k < i; k++)
 		{
 			printf("%-2d", i + 1);
 		}
+		printf("%d", i + 1);
 		printf("\n");
 	}
 	/*输出倒三角*/
 	for (i = n - 1; i > 0; i--)
 	{
-		for (j = 0; j <= n - i; j++)
+		for (j = 1; j <= n - i; j++)
 			printf(" ");
-		for (k = i; k > 0; k--)
+		for (k = i - 1; k > 0; k--)
 		{
 			printf("%-2d", i);
 		}
+		printf("%d", i);
 		printf("\n");
 	}
 	return 0;

@@ -2,18 +2,14 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 int fact(int a);
-int devide(int n, long int k);
 int main()
 {
 	int m,n,i,j;
 	char d;
 	long int k;
-	printf("请输入字符数目：");
-	scanf("%d", &n);
-	printf("请输入排列序号：");
-	scanf("%ld", &k);
-	char c[n - 1] = {};
-	if(k>fact(n))/*若k>n!，显示最后一个排列*/
+	scanf("%d,%ld", &n, &k);
+	char c[n - 1];
+	if(k>fact(n)&&n<13)/*若k>n!，显示最后一个排列*/
 	{
 		/*输出反序的数组*/
 		for (i = n-1; i >= 0; i--)
@@ -23,40 +19,67 @@ int main()
 	}
 	else
 	{
-		for (i = 0; i < n; i++)
-		{
-			c[i] = 97 + i;/*将前n个小写字母赋给数组*/
-		}
-		/*将输入的k分解为1到（n-1）阶乘的线性和*/
-		for (i = n - 1; i >= 1; i--)
-		{
-			m = 0;
-			while (1)
+			for (i = 0; i < n; i++)
 			{
-				if (k - 1 >= fact(i))
-				{
-					k -= fact(i);
-					m++;
-				}
-				else
-				{
-					d = c[n - 1 - i + m];/*将d的值设为当前阶乘的最大倍数序号对应索引的数组位置*/
-					for (j = n - 1 - i + m; j >= n - i; j--)
-					{
-						c[j] = c[j - 1];/*将元素后移一位*/
-					}
-					c[n - i - 1] = d;/*将当前“第一位”设为d*/
-					break;
-				}
-
+				c[i] = 97 + i;/*将前n个小写字母赋给数组*/
 			}
-		}
-	
-		/*遍历数组元素*/
-		for (i = 0; i < n; i++)
-		{
-			printf("%c", c[i]);
-		}
+			/*将输入的k分解为1到（n-1）阶乘的线性和*/
+			if (n <= 13)
+			{
+				for (i = n - 1; i >= 1; i--)
+				{
+					m = 0;
+					while (1)
+					{
+						if (k - 1 >= fact(i))
+						{
+							k -= fact(i);
+							m++;
+						}
+						else
+						{
+							d = c[n - 1 - i + m];/*将d的值设为当前阶乘的最大倍数序号对应索引的数组位置*/
+							for (j = n - 1 - i + m; j >= n - i; j--)
+							{
+								c[j] = c[j - 1];/*将元素后移一位*/
+							}
+							c[n - i - 1] = d;/*将当前“第一位”设为d*/
+							break;
+						}
+
+					}
+				}
+			}
+			else
+			{
+				for (i = 12; i >= 1; i--)
+				{
+					m = 0;
+					while (1)
+					{
+						if (k - 1 >= fact(i))
+						{
+							k -= fact(i);
+							m++;
+						}
+						else
+						{
+							d = c[n - 1 - i + m];/*将d的值设为当前阶乘的最大倍数序号对应索引的数组位置*/
+							for (j = n - 1 - i + m; j >= n - i; j--)
+							{
+								c[j] = c[j - 1];/*将元素后移一位*/
+							}
+							c[n - i - 1] = d;/*将当前“第一位”设为d*/
+							break;
+						}
+
+					}
+				}
+			}
+	}
+	for (i = 0; i < n; i++)
+	{
+		printf("%c", c[i]);
 	}
 	return 0;
 }

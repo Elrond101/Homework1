@@ -1,4 +1,0 @@
-﻿  main.c
-E:\大学\计算机\Homework\A10-5680\main.c(39,35): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-E:\大学\计算机\Homework\A10-5680\main.c(50,23): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-  A10-5680.vcxproj -> E:\大学\计算机\Homework\A10-5680\x64\Debug\A10-5680.exe
